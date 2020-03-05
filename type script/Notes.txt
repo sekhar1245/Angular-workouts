@@ -1,0 +1,172 @@
+Environment Setup for TypeScript
+=============================================
+1.  Install  Node JS
+2.  Install TypeScript
+
+
+1. Install Node JS
+================================================
+	Site:		http://www.nodejs.org
+	File :  		node-v8.11.4-x64.msi		(15MB)
+
+Verification:
+	-> Open Command 	prompt
+	->	 node  -v
+	->	 npm   -v
+	
+2.  npm  install   -g  typescript
+
+Verification:
+
+	-> Open Command 	prompt
+	->	tsc   -v
+	
+Note: TSC means-  type script compiler
+
+=============================================
+
+Execution process
+
+===================================
+
+1.  Prepare type script code in a file and save as  	Demo1.ts
+
+2.  Compile TS file using typescript compiler at command prompt
+
+  E:\TypeScriptDemo>tsc   Demo1.ts
+  
+  -> TSC generate javascript file  (Demo1.js)
+  
+3.  Execute JS file using either node or html file.
+
+	Eg:		node Demo1.js
+
+===========================================
+
+Declaring variables 
+
+1)Type Inference 
+
+var x=10
+type script will infer the type based on intilisation
+
+2)Type Annotation
+	
+var x:number = 20;
+
+
+
+Defining Functions
+        
+		let checkSum = ( x: number , y: number):number => { return x+y; }; 
+// first two "number" defines type for parameters 'x' and 'y'
+
+// third "number" defines `return type` of function
+
+
+We can define optional parameter by adding “?” so that anyone calling that function may or may not pass value for that variable. Optional parameters do not exist in JavaScript and hence those will not be handled.
+	
+
+	let checkSum1 = (n1: number, n2: number, n3?: number) : number => {
+		//observe "?" in parameter n3
+		//Optional parameter has to be the last parameter in the list 
+	}
+	
+	var sum = checkSum1(20, 20);	//output: 40
+We can define any parameter with a default value, and while calling the function, we are not required to pass the value of the parameters.
+	var checkSum1 = (n1: number, n2: number, n3: number = 30) : number => {
+		//observe parameter n3 has default value
+	}
+
+    var sum = checkSum1(20, 20);	// output: 70
+	
+	
+Defining Objects
+==================================================
+	interface Point2D {
+	    x: number;
+	    y: number;
+	}
+var point2D: Point2D = { x: 0, y: 10 }
+
+===================================================
+
+Data Types Classification
+*************************************************************
+3 types of data types
+1)Any
+2)Built in
+3)User-defined 
+
+====================================================
+1)Any
+
+It implies that the variable can take any type of value, which denotes a dynamic type.
+
+var value: any = 30;  //can take string, number, boolean anything
+
+2)Built-in types in Typescript are number, string, boolean, null, undefined, and void.
+
+ var value: string = "john"; //can take only string values	
+ 
+	-->null - variable is set to an object whose value is undefined (empty)
+	-->undefined - variable has no value or object assigned to it.
+
+3) User-defined
+
+User-defined types include enums, classes, interfaces, arrays etc.
+
+ interface Student {
+  name: string,
+  hasEnrolledForSwimm?: boolean; 
+  // ? tells that 'completed' is optional property, user need not give value
+ }
+ let todo: ToDo = {
+  name: 'Sekhar'; 
+ }
+ 
+
+=======================================
+Generics
+
+Generics are templates allowing the same function to accept arguments of various different types.
+
+Generics create the components that are capable of working over data of present and future. It gives us the most dynamic capabilities for developing real time large scale software systems. C# and Java use generics enabling us to create a component that can work over a variety of types rather than a single one.
+
+You can implement Generics by writing "T" instead of any specific data type like- number, boolean etc. as shown below.
+ function calVolumeCube<T>(side: T): T {
+     return side*side*side;
+ }
+To explicitly define type of arguments in function call, you can use <> (angular brackets) as shown below.
+let volume = calVolumeCube <number> (5);
+
+Else compiler will decide the type based on argument you pass as shown below.
+let volume = calVolumeCube (5);
+
+"T" is used to capture type sent by user.
+
+==========================================================
+
+Enums
+
+Enum is a way to organize set of related values. Enum members have numeric value associated with them and can be either constant or computed. By default first member of enum is assigned value 0 (zero). Then each subsequent member is assigned value incremented by 1 automatically.
+
+    enum CardSuit {
+        Clubs,
+        Diamonds,
+        Hearts,
+        Spades
+    }
+    // Sample usage
+    var card = CardSuit.Clubs;
+    // Safety
+    card = "some string"; // Error : string is not assignable to type CardSuit
+
+	
+	
+
+
+
+
+		
+		
