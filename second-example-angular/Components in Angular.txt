@@ -1,0 +1,173 @@
+Components in Angular
+~~~~~~~~~~~~~~~~~~~~
+-> Components are a logical piece of code for Angular application. 
+-> Component can be simply defined as custom tags in HTML.
+
+-> A Component consists of the following:
+		1. Class		
+		2. Metadata
+		3. Template
+		
+1. Class: 
+	->  It is like a  class contains  properties and methods. 
+	
+	->  This has the code which is used to perform the operations on application data.
+	
+	-> It is  defined using TypeScript.	
+	
+		Eg:	app.component.ts	
+		
+
+2. Metadata:
+	-> It provides additional details about class. 
+	
+	-> It is implemented with  a decorator.
+
+	-> Component decorator is used to provide metadata.
+
+Eg:
+	@Component({
+		selector: 'app-root',
+		templateUrl: './app.component.html',
+		...		
+	})
+	
+		
+3. Template: 
+	-> Template refers presentation logic related to component. 
+
+	-> It may contains HTML tags and css.
+	
+	-> It  also includes the  data binding expressions and directives.
+	
+Eg:		
+		templateUrl: './app.component.html',	 	
+--------------------------------------------------------------
+
+Adding components using Angular CLI
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-> Angular CLI provides command to generate required programming items like components.
+
+Eg:
+	C:\Angular\my-project>ng  g  c  emp
+	C:\Angular\my-project>ng  g  c  emp  --skipTests
+ 
+
+The above command will create separate folder in your project with the name "emp" and generate the following files:
+		1. emp.component.ts
+		2. emp.component.html
+		3. emp.component.css
+		4. emp.component.spec.ts
+		
+Note: 
+->  Above command is also register the component in module.		
+
+-> All componets should be registered under declarations section in app.module.ts.
+------------------------------------------------------------------------
+
+ we can specifiy different types of selectors in component decorator
+*********************************************************************************************************
+ 
+1)custom html tags
+==================================
+ @Component({
+		selector: 'app-emp',
+		templateUrl: './emp.component.html',
+		...		
+})
+
+ in app.component.html we need to apply the custom html tag in order to render emp component contents 
+ 
+ app.component.html
+ 
+ <app-emp> adding emp component </app-emp>
+ 
+2) adding component using css selector 
+============================================
+ @Component({
+		selector: '.app-emp',
+		templateUrl: './emp.component.html',
+		...		
+})
+
+ in app.component.html we need to apply the custom html tag in order to render emp component contents 
+ 
+ app.component.html
+<div class="app-emp"></div>
+
+3) adding component using attribute selector
+===============================================
+
+ @Component({
+		selector: '[app-emp]',
+		templateUrl: './emp.component.html',
+		...		
+})
+
+ in app.component.html we need to apply the custom html tag in order to render emp component contents 
+ 
+ app.component.html
+<div app-emp></div>
+
+========================================================
+We can speicify templates two ways 
+*********************************************************************************************************
+
+1)using template URL 
+=================================================
+ @Component({
+		selector: '.app-emp',
+		templateUrl: './emp.component.html',
+		...		
+})
+
+
+
+2)using template keyword (Inline template)
+=====================================================================
+@Component({
+  selector: '[app-test]',
+  template: '<div>Inline template</div>',
+  styleUrls: ['./test.component.css']
+})
+
+Note : If we have inline html spans to multiple  lines  we make use of   back ticks (below esc key on keyboard).
+@Component({
+  selector: '[app-test]',
+  template: `<div> 
+				Inline template
+				</div>`,
+  styleUrls: ['./test.component.css']
+})
+
+====================================================================
+we can specifiy styles  two ways 
+*********************************************************************************************************
+1) using styleUrls keyword
+@Component({
+  selector: '[app-test]',
+  template: '<div>Inline template</div>',
+  styleUrls: ['./test.component.css']
+})
+===============================================================================
+2)Using styles key word 
+
+@Component({
+  selector: '[app-test]',
+  template: `<div> 
+          Inline template using back ticks
+                </div>
+                <h1>Test component </h1>`,
+  styles: [`
+      div 
+      { 
+        color:red
+      } 
+      h1{
+        color:green
+      }
+      `]
+})
+
+Note: We can make use  of back ticks  to specify multiple lines of styles
+
