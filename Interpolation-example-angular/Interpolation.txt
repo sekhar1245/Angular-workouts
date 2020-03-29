@@ -1,0 +1,47 @@
+Interpolation
+===================================
+Interpolation markup with embedded expressions is used by AngularJS to provide data-binding to text nodes and attribute values.
+
+Example:
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: '[app-test]',
+  template: `<div> 
+           interpolation example,
+                </div>
+                <h1>  {{"Hello  "+name+" How are you "}}</h1>
+                `,
+  styles: [`
+      div 
+      { 
+        color:red
+      } 
+      h1{
+        color:green
+      }
+      `]
+})
+export class TestComponent implements OnInit {
+
+  public name="Sekhar";
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
+
+
+what Interpolation can and cant
+==========================================================
+1)Evaluates expressions
+2)String concatination
+3)Using javascript property and methods with in {{}}
+example {{name.lemgth}} {{name.toUpperCase()}}
+4)invoking components methods {{sayHello()}}
+
+1)Cant assign expression results to a variable within {{}}
+2)cant access the global objects like window object with in {{}}, If you want you can define property and assign it to class varibale.
